@@ -1,0 +1,20 @@
+{
+    "login":"ログイン",
+    "restartGame":"ゲームを再開する",
+    "newGame":"新しいゲーム",
+    "showSolution":"ソリューションを表示",
+    "setDifficulty":"難易度設定",
+    "changeAccentColor":"アクセントカラーを変更",
+    "name":"あなたの名前",
+    "requiredField":"必須フィールド",
+    "welcome":"いらっしゃいませ",
+    "selectAccentColor":"アクセントカラーを選択",
+    "signOut":"サインアウト",
+    "sureLogOut":"サインアウトしてもよろしいですか？",
+    "cancel":"キャンセル",
+    "yes":"はい",
+    "gameOver":"ゲームオーバー",
+    "successfully":"数独を無事に解けました！",
+    "chooseNumber":"番号を選択",
+    "options":"オプション"
+}

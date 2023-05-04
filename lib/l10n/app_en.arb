@@ -1,0 +1,20 @@
+{
+    "login":"LOGIN",
+    "restartGame":"Restart Game",
+    "newGame":"New Game",
+    "showSolution":"Show Solution",
+    "setDifficulty":"Set Difficulty",
+    "changeAccentColor":"Change Accent Color",
+    "name":"Your name",
+    "requiredField":"Required field",
+    "welcome":"Welcome",
+    "selectAccentColor":"Select Accent Color",
+    "signOut":"Sign Out",
+    "sureLogOut":"Are you sure you want to sign out?",
+    "cancel":"Cancel",
+    "yes":"Yes",
+    "gameOver":"Game Over",
+    "successfully":"You successfully solved the Sudoku!",
+    "chooseNumber":"Choose a Number",
+    "options":"Options"
+}

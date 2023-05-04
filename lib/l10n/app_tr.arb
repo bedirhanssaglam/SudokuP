@@ -1,0 +1,20 @@
+{
+    "login":"GİRİŞ YAP",
+    "restartGame":"Oyunu Yeniden Başlat",
+    "newGame":"Yeni Oyun",
+    "showSolution":"Çözümü Göster",
+    "setDifficulty":"Zorluk Seviyesi",
+    "changeAccentColor":"İkinci Rengi Değiştir",
+    "name":"Adınız",
+    "requiredField":"Zorunlu alan",
+    "welcome":"Hoşgeldin",
+    "selectAccentColor":"İkinci Rengi Seçin",
+    "signOut":"Çıkış Yap",
+    "sureLogOut":"Çıkış yapmak istediğinize emin misiniz?",
+    "cancel":"İptal",
+    "yes":"Evet",
+    "gameOver":"Oyun Sonu",
+    "successfully":"Sudokuyu başarıyla çözdünüz!",
+    "chooseNumber":"Bir sayı seç",
+    "options":"Seçenekler"
+}

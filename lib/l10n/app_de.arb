@@ -1,0 +1,20 @@
+{
+    "login":"ANMELDUNG",
+    "restartGame":"Spiel neustarten",
+    "newGame":"Neues Spiel",
+    "showSolution":"Lösung anzeigen",
+    "setDifficulty":"Schwierigkeit einstellen",
+    "changeAccentColor":"Akzentfarbe ändern",
+    "name":"Ihren Namen",
+    "requiredField":"Pflichtfeld",
+    "welcome":"Willkommen",
+    "selectAccentColor":"Wählen Sie Akzentfarbe",
+    "signOut":"Austragen",
+    "sureLogOut":"Möchten Sie sich wirklich abmelden?",
+    "cancel":"Stornieren",
+    "yes":"Ja",
+    "gameOver":"Spiel ist aus",
+    "successfully":"Du hast das Sudoku erfolgreich gelöst!",
+    "chooseNumber":"Wähle eine Nummer",
+    "options":"Optionen"
+}

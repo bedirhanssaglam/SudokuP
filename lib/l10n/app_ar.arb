@@ -1,0 +1,20 @@
+{
+    "login":"تسجيل الدخول",
+    "restartGame":"إعادة تشغيل اللعبة",
+    "newGame":"لعبة جديدة",
+    "showSolution":"عرض الحل",
+    "setDifficulty":"مجموعة الصعوبة",
+    "changeAccentColor":"تغيير لون التمييز",
+    "name":"اسمك",
+    "requiredField":"يتطلب حقلا",
+    "welcome":"مرحباً",
+    "selectAccentColor":"حدد لون التمييز",
+    "signOut":"خروج",
+    "sureLogOut":"هل أنت متأكد أنك تريد الخروج؟",
+    "cancel":"يلغي",
+    "yes":"نعم",
+    "gameOver":"انتهت اللعبة",
+    "successfully":"لقد نجحت في حل لعبة Sudoku!",
+    "chooseNumber":"اختر رقم",
+    "options":"خيارات"
+}

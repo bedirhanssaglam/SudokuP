@@ -1,0 +1,60 @@
+name: sudoku_app
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+    
+  # Text
+  google_fonts:
+
+  # Image
+  flutter_svg:
+   
+  # Sudoku Logic Helper
+  sudoku_solver_generator:
+
+  #Local Storage
+  shared_preferences:
+
+  # Animated Alert Dialogs
+  flutter_animated_dialog:
+  
+  # Multi-Languages
+  intl:
+  flutter_localizations:
+    sdk: flutter
+  
+  # State Management
+  provider:  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+  # App Icon 
+  flutter_launcher_icons: "^0.13.1"
+ 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_logo.png"
+  min_sdk_android: 21
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
