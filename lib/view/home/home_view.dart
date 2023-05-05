@@ -345,7 +345,7 @@ class HomeViewState extends State<HomeView> {
                 children: [
                   context.dynamicHeight(.06).ph,
                   CustomText(
-                    "${AppLocalizations.of(context)!.welcome} $name!",
+                    "${AppLocalizations.of(context)?.welcome} $name",
                     textStyle: context.textTheme.headlineSmall?.copyWith(
                       color: ColorConstants.foregroundColor,
                     ),

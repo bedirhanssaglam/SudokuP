@@ -17,17 +17,13 @@ Future<void> main() async {
         ChangeNotifierProvider<IntroProvider>(create: (_) => IntroProvider()),
         ChangeNotifierProvider<LocaleProvider>(create: (_) => LocaleProvider()),
       ],
-      child: MyApp(
-        appLanguage: appLanguage,
-      ),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  final LocaleProvider appLanguage;
-
-  const MyApp({Key? key, required this.appLanguage}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sudoku_app/core/components/text/custom_text.dart';
 import 'package:sudoku_app/core/constants/enums/shared_keys_enums.dart';
+import 'package:sudoku_app/core/extensions/num_extensions.dart';
 import 'package:sudoku_app/view/auth/login/login_view.dart';
 
 import '../../constants/app/color_constants.dart';
@@ -33,11 +34,11 @@ class ExitAlertDialog extends StatelessWidget {
           },
           child: CustomText(AppLocalizations.of(context)!.cancel),
         ),
+        5.pw,
         TextButton(
-          style: ButtonStyle(
-            foregroundColor:
-                MaterialStateProperty.all<Color>(ColorConstants.primaryColor),
-          ),
+          style: TextButton.styleFrom(
+              foregroundColor: ColorConstants.white,
+              backgroundColor: ColorConstants.primaryColor),
           onPressed: () async {
             final SharedPreferences prefs =
                 await SharedPreferences.getInstance();
