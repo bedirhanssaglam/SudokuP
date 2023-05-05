@@ -7,46 +7,41 @@ import '../../constants/enums/shared_keys_enums.dart';
 class LocaleProvider extends ChangeNotifier {
   Locale? _appLocale;
 
-  Locale get appLocal => _appLocale ?? const Locale("en");
+  Locale get appLocal => _appLocale ?? Locale(LanguageEnums.en.language);
 
   fetchLocale() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getString(SharedKeysEnums.languageCode.key) == null) {
-      _appLocale = const Locale('en');
+      _appLocale = Locale(LanguageEnums.en.language);
     } else {
       Locale localeLang =
           Locale(prefs.getString(SharedKeysEnums.languageCode.key)!);
-      if (localeLang == Locale(LanguageEnums.tr.language)) {
-        _appLocale = const Locale('tr');
-      } else if (localeLang == Locale(LanguageEnums.en.language)) {
-        _appLocale = const Locale('en');
-      } else if (localeLang == const Locale('de')) {
-        _appLocale = const Locale('de');
-      } else if (localeLang == const Locale('ja')) {
-        _appLocale = const Locale('ja');
-      } else if (localeLang == const Locale('ar')) {
-        _appLocale = const Locale('ar');
-      }
+      _appLocale = localeLang;
     }
   }
 
   void changeLanguage(Locale type) async {
     var prefs = await SharedPreferences.getInstance();
-    if (type == const Locale("tr")) {
-      _appLocale = const Locale("tr");
-      await prefs.setString('language_code', 'tr');
-    } else if (type == const Locale("en")) {
-      _appLocale = const Locale("en");
-      await prefs.setString('language_code', 'en');
-    } else if (type == const Locale("de")) {
-      _appLocale = const Locale("de");
-      await prefs.setString('language_code', 'de');
-    } else if (type == const Locale("ja")) {
-      _appLocale = const Locale("ja");
-      await prefs.setString('language_code', 'ja');
-    } else if (type == const Locale("ar")) {
-      _appLocale = const Locale("ar");
-      await prefs.setString('language_code', 'ar');
+    if (type == Locale(LanguageEnums.tr.language)) {
+      _appLocale = Locale(LanguageEnums.tr.language);
+      await prefs.setString(
+          SharedKeysEnums.languageCode.key, LanguageEnums.tr.language);
+    } else if (type == Locale(LanguageEnums.en.language)) {
+      _appLocale = Locale(LanguageEnums.en.language);
+      await prefs.setString(
+          SharedKeysEnums.languageCode.key, LanguageEnums.en.language);
+    } else if (type == Locale(LanguageEnums.de.language)) {
+      _appLocale = Locale(LanguageEnums.de.language);
+      await prefs.setString(
+          SharedKeysEnums.languageCode.key, LanguageEnums.de.language);
+    } else if (type == Locale(LanguageEnums.ja.language)) {
+      _appLocale = Locale(LanguageEnums.ja.language);
+      await prefs.setString(
+          SharedKeysEnums.languageCode.key, LanguageEnums.ja.language);
+    } else if (type == Locale(LanguageEnums.ar.language)) {
+      _appLocale = Locale(LanguageEnums.ar.language);
+      await prefs.setString(
+          SharedKeysEnums.languageCode.key, LanguageEnums.ar.language);
     }
     notifyListeners();
   }

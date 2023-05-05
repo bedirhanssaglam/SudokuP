@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sudoku_app/core/components/switch/custom_switch.dart';
-import 'package:sudoku_app/core/constants/app/string_constants.dart';
+import 'package:sudoku_app/core/constants/app/app_constants.dart';
 import 'package:sudoku_app/core/constants/enums/shared_keys_enums.dart';
 import 'package:sudoku_app/core/constants/enums/theme_enums.dart';
 import 'package:sudoku_app/core/extensions/context_extensions.dart';
@@ -22,16 +22,13 @@ import '../../core/components/alerts/number_alert_dialog.dart';
 import '../../core/components/floatingActionButton/floating_action_button.dart';
 import '../../core/components/text/custom_text.dart';
 import '../../core/constants/app/color_constants.dart';
-import '../../core/constants/enums/language_enums.dart';
 import '../../core/init/provider/locale_provider.dart';
 import '../../core/utils/board_style.dart';
 import '../../core/utils/l10n.dart';
 import '../../core/utils/new_game.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({Key? key, this.currentLanguage}) : super(key: key);
-
-  Locale? currentLanguage;
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => HomeViewState();
@@ -42,7 +39,6 @@ class HomeViewState extends State<HomeView> {
   bool gameOver = false;
   int timesCalled = 0;
   bool isButtonDisabled = false;
-  bool isFABDisabled = false;
   late List<List<List<int>>> gameList;
   late List<List<int>> game;
   late List<List<int>> gameCopy;
@@ -67,7 +63,6 @@ class HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     checkName();
-    fetchLocale();
     getPrefs().whenComplete(() {
       if (currentDifficultyLevel == null) {
         currentDifficultyLevel = AppConstants.easy;
@@ -79,8 +74,6 @@ class HomeViewState extends State<HomeView> {
               MediaQuery.of(context).platformBrightness == Brightness.light
                   ? ThemeEnums.light.theme
                   : ThemeEnums.dark.theme;
-        } else {
-          currentTheme = ThemeEnums.dark.theme;
         }
         setPrefs(SharedKeysEnums.currentTheme.key);
       }
@@ -94,26 +87,6 @@ class HomeViewState extends State<HomeView> {
       });
       newGame(currentDifficultyLevel!);
       changeAccentColor(currentAccentColor!, true);
-    });
-  }
-
-  fetchLocale() async {
-    setState(() {
-      if (widget.currentLanguage == Locale(LanguageEnums.en.language)) {
-        dropdownValue = LanguageEnums.english.language;
-      }
-      if (widget.currentLanguage == Locale(LanguageEnums.de.language)) {
-        dropdownValue = LanguageEnums.german.language;
-      }
-      if (widget.currentLanguage == Locale(LanguageEnums.tr.language)) {
-        dropdownValue = LanguageEnums.turkish.language;
-      }
-      if (widget.currentLanguage == Locale(LanguageEnums.ja.language)) {
-        dropdownValue = LanguageEnums.japanese.language;
-      }
-      if (widget.currentLanguage == Locale(LanguageEnums.ar.language)) {
-        dropdownValue = LanguageEnums.arabic.language;
-      }
     });
   }
 
@@ -231,16 +204,12 @@ class HomeViewState extends State<HomeView> {
   }
 
   void newGame([String difficulty = AppConstants.easy]) {
-    setState(() {
-      isFABDisabled = !isFABDisabled;
-    });
     Future.delayed(const Duration(milliseconds: 200), () {
       setState(() {
         setGame(2, difficulty);
         isButtonDisabled =
             isButtonDisabled ? !isButtonDisabled : isButtonDisabled;
         gameOver = false;
-        isFABDisabled = !isFABDisabled;
       });
     });
   }
@@ -366,90 +335,7 @@ class HomeViewState extends State<HomeView> {
         backgroundColor: ColorConstants.primaryBackgroundColor,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56.0),
-          child: AppBar(
-            leading: IconButton(
-              onPressed: () {
-                showAnimatedDialog<void>(
-                  animationType: DialogTransitionType.fadeScale,
-                  barrierDismissible: true,
-                  duration: const Duration(milliseconds: 350),
-                  context: context,
-                  builder: (_) => const ExitAlertDialog(),
-                );
-              },
-              icon: Icon(
-                Icons.logout,
-                color: ColorConstants.foregroundColor,
-              ),
-            ),
-            centerTitle: true,
-            elevation: 5,
-            shadowColor: ColorConstants.primaryColor,
-            title: CustomText(
-              AppConstants.appName,
-              textStyle: context.textTheme.titleLarge
-                  ?.copyWith(color: ColorConstants.foregroundColor),
-            ),
-            backgroundColor: ColorConstants.primaryBackgroundColor,
-            actions: [
-              Container(
-                height: 30,
-                width: 55,
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                decoration: const BoxDecoration(
-                  color: ColorConstants.lightWhite,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(16),
-                  ),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    value: dropdownValue,
-                    dropdownColor: ColorConstants.primaryBackgroundColor,
-                    onChanged: (String? value) {
-                      setState(() {
-                        dropdownValue = value!;
-                      });
-                      context.read<LocaleProvider>().changeLanguage(
-                            Locale(L10n.setLanguage(dropdownValue!)),
-                          );
-                    },
-                    items: AppConstants.languageList
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 3),
-                          child: SvgPicture.asset(
-                            L10n.checkLanguageIcon(value).toSvg,
-                            height: 23,
-                            width: 45,
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: CustomSwitch(
-                  controller: _controller,
-                  width: context.dynamicWidth(0.15),
-                  height: context.dynamicHeight(0.035),
-                  thumb: ValueListenableBuilder(
-                    valueListenable: _controller,
-                    builder: (_, value, __) {
-                      return Icon(
-                        value ? Icons.dark_mode : Icons.sunny,
-                        size: 23,
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ],
-          ),
+          child: _buildAppBar(context),
         ),
         body: Builder(
           builder: (builder) {
@@ -471,7 +357,7 @@ class HomeViewState extends State<HomeView> {
             );
           },
         ),
-        floatingActionButton: FancyFab(
+        floatingActionButton: AnimatedFloatingButton(
           onRefresh: () {
             Timer(const Duration(milliseconds: 200), () => restartGame());
           },
@@ -531,6 +417,93 @@ class HomeViewState extends State<HomeView> {
           },
         ),
       ),
+    );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      leading: IconButton(
+        onPressed: () {
+          showAnimatedDialog<void>(
+            animationType: DialogTransitionType.fadeScale,
+            barrierDismissible: true,
+            duration: const Duration(milliseconds: 350),
+            context: context,
+            builder: (_) => const ExitAlertDialog(),
+          );
+        },
+        icon: Icon(
+          Icons.logout,
+          color: ColorConstants.foregroundColor,
+        ),
+      ),
+      centerTitle: true,
+      elevation: 5,
+      shadowColor: ColorConstants.primaryColor,
+      title: CustomText(
+        AppConstants.appName,
+        textStyle: context.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.foregroundColor),
+      ),
+      backgroundColor: ColorConstants.primaryBackgroundColor,
+      actions: [
+        Container(
+          height: 30,
+          width: 55,
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          decoration: const BoxDecoration(
+            color: ColorConstants.lightWhite,
+            borderRadius: BorderRadius.all(
+              Radius.circular(16),
+            ),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              value: dropdownValue,
+              dropdownColor: ColorConstants.primaryBackgroundColor,
+              onChanged: (String? value) {
+                setState(() {
+                  dropdownValue = value!;
+                });
+                context.read<LocaleProvider>().changeLanguage(
+                      Locale(L10n.setLanguage(dropdownValue!)),
+                    );
+              },
+              items: AppConstants.languageList
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 3),
+                    child: SvgPicture.asset(
+                      L10n.checkLanguageIcon(value).toSvg,
+                      height: 23,
+                      width: 45,
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: CustomSwitch(
+            controller: _controller,
+            width: context.dynamicWidth(0.15),
+            height: context.dynamicHeight(0.035),
+            thumb: ValueListenableBuilder(
+              valueListenable: _controller,
+              builder: (_, value, __) {
+                return Icon(
+                  value ? Icons.dark_mode : Icons.sunny,
+                  size: 23,
+                );
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

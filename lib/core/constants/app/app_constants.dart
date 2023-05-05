@@ -12,6 +12,7 @@ class AppConstants {
   static const String easy = 'easy';
   static const String medium = 'medium';
   static const String hard = 'hard';
+
   static List<Map<String, String>> splashData = [
     {
       "text":
@@ -36,12 +37,5 @@ class AppConstants {
     'German',
     'Japanese',
     'Arabic',
-  ];
-  static const List<String> flags = <String>[
-    'turkish',
-    'english',
-    'germany',
-    'japan',
-    'arabic',
   ];
 }

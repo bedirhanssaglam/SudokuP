@@ -10,9 +10,7 @@ import '../intro/intro_view.dart';
 import '../login/login_view.dart';
 
 class SplashView extends StatefulWidget {
-  SplashView({super.key, this.currentLanguage});
-
-  Locale? currentLanguage;
+  const SplashView({super.key});
 
   @override
   State<SplashView> createState() => _SplashViewState();
@@ -36,8 +34,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  HomeView(currentLanguage: widget.currentLanguage),
+              builder: (context) => const HomeView(),
             ));
       } else if (prefs.getBool(SharedKeysEnums.isLogged.key) == false) {
         Navigator.push(

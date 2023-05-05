@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sudoku_app/core/init/provider/intro_provider.dart';
 import 'package:sudoku_app/view/auth/splash/splash_view.dart';
 import 'core/constants/app/color_constants.dart';
-import 'core/constants/app/string_constants.dart';
+import 'core/constants/app/app_constants.dart';
 import 'core/init/provider/locale_provider.dart';
 import 'core/utils/l10n.dart';
 
@@ -42,9 +42,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: ColorConstants.primaryColor,
           ),
-          home: SplashView(
-            currentLanguage: appLanguage.appLocal,
-          ),
+          home: const SplashView(),
         );
       },
     );

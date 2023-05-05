@@ -1,17 +1,16 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:sudoku_app/core/constants/app/color_constants.dart';
 
-class FancyFab extends StatefulWidget {
+class AnimatedFloatingButton extends StatefulWidget {
   final VoidCallback onRefresh;
   final VoidCallback onNewGame;
   final VoidCallback onShowSolution;
   final VoidCallback onDifficult;
   final VoidCallback onChangeColor;
 
-  const FancyFab({
+  const AnimatedFloatingButton({
     Key? key,
     required this.onRefresh,
     required this.onNewGame,
@@ -21,10 +20,10 @@ class FancyFab extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FancyFabState createState() => _FancyFabState();
+  _AnimatedFloatingButtonState createState() => _AnimatedFloatingButtonState();
 }
 
-class _FancyFabState extends State<FancyFab>
+class _AnimatedFloatingButtonState extends State<AnimatedFloatingButton>
     with SingleTickerProviderStateMixin {
   bool isOpened = false;
   late AnimationController _animationController;

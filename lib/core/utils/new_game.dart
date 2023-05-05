@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart' show immutable;
-import 'package:sudoku_app/core/constants/app/string_constants.dart';
+import 'package:sudoku_app/core/constants/app/app_constants.dart';
 import 'package:sudoku_solver_generator/sudoku_solver_generator.dart';
 
 @immutable

@@ -41,8 +41,7 @@ class ExitAlertDialog extends StatelessWidget {
           onPressed: () async {
             final SharedPreferences prefs =
                 await SharedPreferences.getInstance();
-            await prefs.remove(SharedKeysEnums.name.key);
-            await prefs.remove(SharedKeysEnums.isLogged.key).then(
+            await prefs.setBool(SharedKeysEnums.isLogged.key, false).then(
                   (_) => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const LoginView(),
                   )),

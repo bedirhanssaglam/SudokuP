@@ -8,7 +8,7 @@ import 'package:sudoku_app/core/extensions/num_extensions.dart';
 import 'package:sudoku_app/core/init/provider/intro_provider.dart';
 
 import '../../../core/components/text/custom_text.dart';
-import '../../../core/constants/app/string_constants.dart';
+import '../../../core/constants/app/app_constants.dart';
 import '../login/login_view.dart';
 import '../widgets/intro_header.dart';
 

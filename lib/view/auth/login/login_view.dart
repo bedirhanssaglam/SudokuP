@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sudoku_app/core/components/button/button.dart';
 import 'package:sudoku_app/core/components/text/custom_text.dart';
 import 'package:sudoku_app/core/components/textFormField/text_form_field.dart';
-import 'package:sudoku_app/core/constants/app/string_constants.dart';
+import 'package:sudoku_app/core/constants/app/app_constants.dart';
 import 'package:sudoku_app/core/extensions/context_extensions.dart';
 import 'package:sudoku_app/core/extensions/image_extensions.dart';
 import 'package:sudoku_app/core/extensions/num_extensions.dart';

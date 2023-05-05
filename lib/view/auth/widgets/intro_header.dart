@@ -4,7 +4,7 @@ import 'package:sudoku_app/core/extensions/image_extensions.dart';
 import 'package:sudoku_app/core/extensions/num_extensions.dart';
 
 import '../../../core/components/text/custom_text.dart';
-import '../../../core/constants/app/string_constants.dart';
+import '../../../core/constants/app/app_constants.dart';
 
 class IntroHeader extends StatelessWidget {
   const IntroHeader({
